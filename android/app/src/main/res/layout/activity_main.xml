@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@android:color/transparent">
 
     <Button
         android:id="@+id/attach_btn"
@@ -56,6 +57,7 @@
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="@+id/title_tv"
         app:layout_constraintEnd_toEndOf="@+id/title_tv"
-        app:layout_constraintTop_toBottomOf="@+id/title_tv"/>
+        app:layout_constraintTop_toBottomOf="@+id/title_tv"
+        android:visibility="gone"/>
 
 </android.support.constraint.ConstraintLayout>

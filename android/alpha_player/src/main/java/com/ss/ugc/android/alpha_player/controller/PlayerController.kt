@@ -322,6 +322,7 @@ class PlayerController(val context: Context, owner: LifecycleOwner, val alphaVid
                     emitEndSignal()
                 }
             }
+            else -> {}
         }
     }
 
@@ -336,7 +337,7 @@ class PlayerController(val context: Context, owner: LifecycleOwner, val alphaVid
         }
     }
 
-    override fun handleMessage(msg: Message?): Boolean {
+    override fun handleMessage(msg: Message): Boolean {
         msg?.let {
             when(msg.what) {
                 INIT_MEDIA_PLAYER -> {

@@ -46,6 +46,7 @@ public class GLTextureView
         View.OnLayoutChangeListener {
 
     private final static String TAG = "GLTextureView";
+
     private final static boolean LOG_ATTACH_DETACH = BuildConfig.DEBUG;
     private final static boolean LOG_THREADS = BuildConfig.DEBUG;
     private final static boolean LOG_PAUSE_RESUME = BuildConfig.DEBUG;

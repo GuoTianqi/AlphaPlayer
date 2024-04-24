@@ -9,8 +9,8 @@ import android.widget.Toast
 import com.ss.ugc.android.alpha_player.IMonitor
 import com.ss.ugc.android.alpha_player.IPlayerAction
 import com.ss.ugc.android.alpha_player.model.ScaleType
+import com.ss.ugc.android.alphavideoplayer.databinding.ActivityMainBinding
 import com.ss.ugc.android.alphavideoplayer.utils.PermissionUtils
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 
 /**
@@ -20,17 +20,19 @@ class MainActivity : AppCompatActivity() {
 
     private val TAG = "MainActivity"
     val basePath = Environment.getExternalStorageDirectory().absolutePath
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         PermissionUtils.verifyStoragePermissions(this)
         initVideoGiftView()
     }
 
     private fun initVideoGiftView() {
-        video_gift_view.initPlayerController(this, this, playerAction, monitor)
+        binding.videoGiftView.initPlayerController(this, this, playerAction, monitor)
     }
 
     private val playerAction = object : IPlayerAction {
@@ -58,11 +60,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun attachView(v: View) {
-        video_gift_view.attachView()
+        binding.videoGiftView.attachView()
     }
 
     fun detachView(v: View) {
-        video_gift_view.detachView()
+        binding.videoGiftView.detachView()
     }
 
     fun playGift(v: View) {
@@ -72,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "please run 'gift_install.sh gift/demoRes' for load alphaVideo resource.", Toast.LENGTH_SHORT)
                 .show()
         }
-        video_gift_view.startVideoGift(testPath)
+        binding.videoGiftView.startVideoGift(testPath)
     }
 
     private fun getResourcePath(): String {
@@ -86,6 +88,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        video_gift_view.releasePlayerController()
+        binding.videoGiftView.releasePlayerController()
     }
 }
